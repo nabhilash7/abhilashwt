@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ book.title }} - Details</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Book Details</h1>
+        
+        <div class="book-details">
+            <h2>{{ book.title }}</h2>
+            
+            <div class="detail-row">
+                <span class="label">Author:</span>
+                <span class="value">{{ book.author }}</span>
+            </div>
+            
+            <div class="detail-row">
+                <span class="label">Year Published:</span>
+                <span class="value">{{ book.year }}</span>
+            </div>
+            
+            <div class="detail-row">
+                <span class="label">Genre:</span>
+                <span class="value">{{ book.genre }}</span>
+            </div>
+            
+            <div class="detail-row">
+                <span class="label">Read:</span>
+                <span class="value">{{ 'Yes' if book.read else 'No' }}</span>
+            </div>
+        </div>
+        
+        <div class="actions">
+            <a href="{{ url_for('index') }}" class="btn">Back to Library</a>
+            <a href="{{ url_for('delete', book_id=book._id) }}" class="btn btn-danger" onclick="return confirm('Are you sure?');">Delete Book</a>
+        </div>
+    </div>
+</body>
+</html>
